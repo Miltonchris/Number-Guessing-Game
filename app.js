@@ -18,30 +18,30 @@ button.addEventListener('click', function(){
 	let guess = parseInt(input.value);
 	// console.log(guess);
 
-	if(isNaN(guess)|| guess < min || guess > max){
+	if(isNaN(guess) || guess < min || guess > max) {
 		setMessage(`Please eneter a value between ${min} and ${max}` , 'red');
 	}
 
-	if(guess === winningNum){
+	if(guess === winningNum) {
 		input.style.borderColor = 'green';
 		input.disabled = true;
 		setMessage(`You won! the number is ${winningNum}`, 'green');
-	}else {
+	} else {
 		guessLeft -= 1;
 
-		if(guessLeft === 0){
+		if(guessLeft === 0) {
 			input.style.borderColor = 'red';
 			input.disabled = true;
 			setMessage(`You Lost you have ${guessLeft} left the correct number is: ${winningNum}`, 'red');
-		}else {
+		} else {
 			input.value = '';
 			input.style.borderColor = 'red';
 			setMessage(`${guess} is wrong you have ${guessLeft} left`, 'red');
 		}
 	}
-})
+});
 
-function setMessage(msg, color){
+var setMessage = function(msg, color) {
 	message.style.color = color;
 	message.textContent = msg;
-}
+};
